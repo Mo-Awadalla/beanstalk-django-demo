@@ -1,0 +1,28 @@
+{% extends "polls/base.html" %}
+
+{% block title %}Vote · Django Polls{% endblock %}
+
+{% block content %}
+  <p class="eyebrow">Your choice</p>
+  <h1>{{ question.question_text }}</h1>
+  <p class="intro">Select one answer and submit your vote to see the results.</p>
+
+  <section class="card">
+    {% if error_message %}<p class="error" role="alert">{{ error_message }}</p>{% endif %}
+    {% if question.choice_set.all %}
+      <form action="{% url 'polls:vote' question.id %}" method="post">
+        {% csrf_token %}
+        {% for choice in question.choice_set.all %}
+          <label class="choice" for="choice{{ forloop.counter }}">
+            <input type="radio" name="choice" id="choice{{ forloop.counter }}" value="{{ choice.id }}">
+            <span>{{ choice.choice_text }}</span>
+          </label>
+        {% endfor %}
+        <button class="button" type="submit">Submit vote</button>
+      </form>
+    {% else %}
+      <p class="empty">This poll doesn’t have any choices yet.</p>
+    {% endif %}
+    <a class="button secondary" href="{% url 'polls:index' %}">Back to all polls</a>
+  </section>
+{% endblock %}

@@ -1,0 +1,24 @@
+{% extends "polls/base.html" %}
+
+{% block title %}Polls · Django Polls{% endblock %}
+
+{% block content %}
+  <p class="eyebrow">Community questions</p>
+  <h1>Cast your vote.</h1>
+  <p class="intro">Choose a poll below, select an answer, and see the results update. This sample app follows the Django polls tutorial.</p>
+
+  {% if latest_question_list %}
+    <ul class="poll-list">
+      {% for question in latest_question_list %}
+        <li>
+          <a class="poll-link" href="{% url 'polls:detail' question.id %}">
+            <span>{{ question.question_text }}</span>
+            <span class="arrow" aria-hidden="true">→</span>
+          </a>
+        </li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p class="empty">No polls are available right now.</p>
+  {% endif %}
+{% endblock %}

@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %}Django Polls{% endblock %}</title>
+    <style>
+      :root { color-scheme: light; font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; color: #17212b; background: #f3f6fa; }
+      * { box-sizing: border-box; }
+      body { margin: 0; min-height: 100vh; background: radial-gradient(circle at top left, #e0ecfa, transparent 34rem), #f3f6fa; }
+      header { border-bottom: 1px solid #dce5ef; background: #ffffffd9; }
+      .bar, main { width: min(880px, calc(100% - 2rem)); margin: 0 auto; }
+      .bar { display: flex; align-items: center; justify-content: space-between; min-height: 68px; }
+      .brand { color: #143b60; font-size: 1.05rem; font-weight: 750; letter-spacing: -.02em; text-decoration: none; }
+      .tag { color: #607184; font-size: .85rem; }
+      main { padding: clamp(2.5rem, 8vw, 5.5rem) 0; }
+      .eyebrow { margin: 0 0 .75rem; color: #3972a6; font-size: .76rem; font-weight: 750; letter-spacing: .13em; text-transform: uppercase; }
+      h1 { margin: 0; color: #122c45; font-size: clamp(2rem, 5vw, 3rem); letter-spacing: -.045em; line-height: 1.08; }
+      .intro { max-width: 42rem; margin: 1rem 0 2rem; color: #596b7d; font-size: 1.05rem; line-height: 1.65; }
+      .card { margin-top: 1.5rem; padding: clamp(1.25rem, 4vw, 2rem); border: 1px solid #e0e7ef; border-radius: 20px; background: #fff; box-shadow: 0 18px 50px #18304b0d; }
+      .poll-list { display: grid; gap: .8rem; margin: 1.5rem 0 0; padding: 0; list-style: none; }
+      .poll-link { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: 1.1rem 1.2rem; border: 1px solid #e1e8f0; border-radius: 14px; color: #173c5e; font-weight: 650; text-decoration: none; transition: border-color .15s ease, transform .15s ease; }
+      .poll-link:hover { transform: translateY(-1px); border-color: #80acd1; }
+      .arrow { color: #7892a8; font-size: 1.3rem; }
+      .choice { display: flex; align-items: center; gap: .7rem; margin: .8rem 0; padding: .9rem 1rem; border: 1px solid #e1e8f0; border-radius: 12px; }
+      .choice input { width: 1.1rem; height: 1.1rem; accent-color: #1d659f; }
+      .error { padding: .8rem 1rem; border-radius: 10px; background: #fff1ef; color: #a2382a; }
+      .button { display: inline-flex; align-items: center; justify-content: center; margin-top: 1rem; padding: .8rem 1.15rem; border: 0; border-radius: 10px; background: #1769a6; color: #fff; font: inherit; font-weight: 700; text-decoration: none; cursor: pointer; }
+      .button:hover { background: #125683; }
+      .button.secondary { border: 1px solid #cfdae5; background: #fff; color: #28445f; }
+      .button.secondary:hover { background: #f5f8fb; }
+      .meta { color: #718194; font-size: .9rem; }
+      .result { display: flex; align-items: baseline; justify-content: space-between; gap: 1rem; padding: 1rem 0; border-bottom: 1px solid #e8edf2; }
+      .result:last-child { border-bottom: 0; }
+      .count { color: #52677c; white-space: nowrap; }
+      .empty { margin: 1.5rem 0 0; padding: 1.2rem; border: 1px dashed #cad6e2; border-radius: 14px; color: #617286; }
+      footer { padding: 1.5rem 0 2.5rem; color: #8492a0; font-size: .85rem; }
+      @media (max-width: 560px) { .tag { display: none; } .poll-link { align-items: flex-start; } }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="bar">
+        <a class="brand" href="{% url 'polls:index' %}">Django Polls</a>
+        <span class="tag">A simple voting app built with Django</span>
+      </div>
+    </header>
+    <main>
+      {% block content %}{% endblock %}
+      <footer>Built with Django · Hosted on AWS Elastic Beanstalk</footer>
+    </main>
+  </body>
+</html>

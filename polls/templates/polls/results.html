@@ -1,0 +1,22 @@
+{% extends "polls/base.html" %}
+
+{% block title %}Results · Django Polls{% endblock %}
+
+{% block content %}
+  <p class="eyebrow">Poll results</p>
+  <h1>{{ question.question_text }}</h1>
+  <p class="intro">{% if total_votes %}{{ total_votes }} vote{{ total_votes|pluralize }} so far.{% else %}No votes yet. Be the first to choose an answer.{% endif %}</p>
+
+  <section class="card" aria-label="Poll results">
+    {% for choice in question.choice_set.all %}
+      <div class="result">
+        <strong>{{ choice.choice_text }}</strong>
+        <span class="count">{{ choice.votes }} vote{{ choice.votes|pluralize }}</span>
+      </div>
+    {% empty %}
+      <p class="empty">This poll doesn’t have any choices yet.</p>
+    {% endfor %}
+    <a class="button" href="{% url 'polls:detail' question.id %}">Vote again</a>
+    <a class="button secondary" href="{% url 'polls:index' %}">All polls</a>
+  </section>
+{% endblock %}
