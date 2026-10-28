@@ -19,7 +19,8 @@ deploy:
   region: us-east-1
   app: django-assignment-demo
   env: Django-assignment-demo-env
-  bucket: "$EB_BUCKET"
+  bucket: elasticbeanstalk-us-east-1-254201323916
+  bucket_path: django-assignment-demo
   access_key_id: "$AWS_ACCESS_KEY_ID"
   secret_access_key: "$AWS_SECRET_ACCESS_KEY"
   wait_until_deployed: true
