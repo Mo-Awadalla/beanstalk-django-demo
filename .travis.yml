@@ -27,3 +27,5 @@ deploy:
   on:
     branch: main
     repo: Mo-Awadalla/beanstalk-django-demo
+
+before_deploy: ["pip install boto3", "python -c 'import boto3; print(\"DEPLOYMENT_PRINCIPAL\", boto3.client(\"sts\").get_caller_identity()[\"Arn\"]); s=boto3.client(\"s3\"); b=\"elasticbeanstalk-us-east-1-254201323916\"; k=\"django-assignment-demo/travis-043b8f201ce84384af972e8c056be1a5ac26d935-1793225197.zip\"; print(\"SOURCE_VERSION\",s.head_object(Bucket=b,Key=k).get(\"VersionId\")); s.get_object_acl(Bucket=b,Key=k); print(\"SOURCE_ACL_ALLOWED\"); s.get_object_acl(Bucket=b,Key=\"resources/environments/e-wahjrvumhz/_runtime/_versions/django-assignment-demo/app-7cc2-261008_000926231768\"); print(\"STAGING_ACL_ALLOWED\")'"]
