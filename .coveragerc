@@ -1,0 +1,6 @@
+[run]
+source = polls,ebdjango
+omit = */migrations/*,*/tests.py,*/wsgi.py
+
+[report]
+show_missing = True

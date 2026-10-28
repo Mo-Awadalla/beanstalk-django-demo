@@ -1,0 +1,28 @@
+language: python
+dist: jammy
+python:
+  - "3.13"
+cache: pip
+install:
+  - pip install -r requirements-dev.txt
+script:
+  - black --check .
+  - flake8 .
+  - python manage.py check
+  - coverage run manage.py test
+  - coverage report
+after_success:
+  - coveralls
+deploy:
+  provider: elasticbeanstalk
+  edge: true
+  region: us-east-1
+  app: "$EB_APPLICATION_NAME"
+  env: django-assignment-demo-env
+  bucket: "$EB_BUCKET"
+  access_key_id: "$AWS_ACCESS_KEY_ID"
+  secret_access_key: "$AWS_SECRET_ACCESS_KEY"
+  wait_until_deployed: true
+  on:
+    branch: main
+    repo: Mo-Awadalla/beanstalk-django-demo

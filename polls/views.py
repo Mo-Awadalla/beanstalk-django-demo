@@ -14,7 +14,9 @@ class IndexView(generic.ListView):
     context_object_name = "latest_question_list"
 
     def get_queryset(self):
-        return Question.objects.filter(pub_date__lte=timezone.now()).order_by("-pub_date")[:5]
+        return Question.objects.filter(pub_date__lte=timezone.now()).order_by(
+            "-pub_date"
+        )[:5]
 
 
 class DetailView(generic.DetailView):
@@ -34,7 +36,9 @@ class ResultsView(generic.DetailView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context["total_votes"] = sum(choice.votes for choice in self.object.choice_set.all())
+        context["total_votes"] = sum(
+            choice.votes for choice in self.object.choice_set.all()
+        )
         return context
 
 
