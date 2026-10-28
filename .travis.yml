@@ -17,8 +17,8 @@ deploy:
   provider: elasticbeanstalk
   edge: true
   region: us-east-1
-  app: "$EB_APPLICATION_NAME"
-  env: django-assignment-demo-env
+  app: django-assignment-demo
+  env: Django-assignment-demo-env
   bucket: "$EB_BUCKET"
   access_key_id: "$AWS_ACCESS_KEY_ID"
   secret_access_key: "$AWS_SECRET_ACCESS_KEY"

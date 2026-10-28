@@ -44,8 +44,8 @@ coverage report
 The tests cover published and future questions, voting, invalid choices,
 redirects, and the recent-publication date range.
 
-Travis repository settings must contain `EB_APPLICATION_NAME` and `EB_BUCKET`
-for the existing AWS application and source bundle bucket, along with masked
+Travis repository settings must contain `EB_BUCKET`
+for the existing AWS source bundle bucket, along with masked
 `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY` deployment credentials. Connect
 this repository to Coveralls and configure a masked `COVERALLS_REPO_TOKEN` if
 required by the integration. Never commit credentials or expose them to fork
